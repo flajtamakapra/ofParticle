@@ -9,21 +9,24 @@ class Particle {
 
 
 //    void setup();
-    void update();
+    void update();    
     void draw();
 
 
-    float x;        // position
-    float y;
-    float z;
+    ofPoint pts;
+//    float x;        // position
+//    float y;
+//    float z;
+    float angle = 0;
+    float r = 0;
     float speedY;   // speed and direction
     float speedX;
     float speedZ;
     int dim;        // size
     ofColor color;  // color using ofColor type
 
-    Particle(float x, float y, int dim, float speedX, float speedY, ofColor color);
-    Particle(float x, float y, float z, int dim, float speedX, float speedY, float speedZ, ofColor color);
+    Particle(ofPoint pts, float angle, int dim, float speedX, float speedY, ofColor color);
+    Particle(ofPoint pts, int dim, float speedX, float speedY, float speedZ, ofColor color);
     ~Particle();
     private:
 };
