@@ -23,19 +23,22 @@ Particle::Particle(ofPoint pts, int dim, float speedX, float speedY, float speed
 }
 
 void Particle::update(){
-
-
-
     if(pts.x > ofGetWidth()){
         pts.x = 0;
     }
     if(pts.y > ofGetHeight()){
         pts.y = -10;
     }
+    if(pts.z){
+        if(pts.z > 1000 || pts.z < -1000) {
+            pts.z = 0;
+            pts.y = -10;
+        }
+        pts.z+=speedZ;
+    }
 
     pts.x+=speedX;
     pts.y+=speedY;
-
 
 }
 
@@ -43,9 +46,16 @@ void Particle::draw(){
     ofSetColor(color);
     ofDrawCircle(pts.x,pts.y,dim);
 }
+void Particle::setD(int dim){
+    this->dim = dim;
+}
+bool Particle::operator ==(Particle p){
+    return (this->pts.x == p.pts.x && this->pts.y == p.pts.y && this->pts.z == p.pts.z);
+}
 
 Particle::~Particle(){
 
 }
+
 
 
