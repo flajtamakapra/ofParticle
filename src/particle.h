@@ -16,17 +16,20 @@ class Particle {
 
 
     ofPoint pts;
-    float angle = 0;
-    float r = 0;
+    ofPoint ptsOrig;
+    float radius;
     float speedY;   // speed and direction
     float speedX;
     float speedZ;
+    float offsetX, offsetY;
     int dim;        // size
     ofColor color;  // color using ofColor type
+    float startPt = ofRandom(TWO_PI);
 
 
 
-    Particle(ofPoint pts, float angle, int dim, float speedX, float speedY, ofColor color);
+
+    Particle(ofPoint pts, float radius, int dim, float speedX, float speedY, float speedZ, float offsetX, float offsetY, ofColor color);
     Particle(ofPoint pts, int dim, float speedX, float speedY, float speedZ, ofColor color);
     ~Particle();
     private:
