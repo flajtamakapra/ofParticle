@@ -21,7 +21,7 @@ class Particle {
     float speedY;   // speed and direction
     float speedX;
     float speedZ;
-    float offsetX, offsetY;
+    float offsetX, offsetY, offsetZ;
     float angle;
     int dim;        // size
     ofColor color;  // color using ofColor type
@@ -32,7 +32,7 @@ class Particle {
 
 
 
-    Particle(ofPoint pts, float radius, int dim, float speedX, float speedY, float speedZ, float offsetX, float offsetY, ofColor color);
+    Particle(ofPoint pts, float radius, int dim, float speedX, float speedY, float speedZ, float offsetX, float offsetY, float offsetZ, ofColor color);
     Particle(ofPoint pts, int dim, float speedX, float speedY, float speedZ, ofColor color);
     ~Particle();
     private:
