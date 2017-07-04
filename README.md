@@ -1,6 +1,6 @@
 # ofParticle
 
-- Under developmen -
+- Under development -
 
 Creating a particle as an object. 
 
