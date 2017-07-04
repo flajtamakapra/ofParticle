@@ -4,7 +4,8 @@
 Particle::Particle(ofPoint pts, float angle, int dim, float speedX, float speedY, ofColor color) {
 
     this->pts = pts;
-    this->dim = dim;
+//    this->dim = dim;
+    sphere.setRadius(dim);
     this->angle = angle;
     this->r = r;
     this->speedY = speedY;
@@ -15,7 +16,7 @@ Particle::Particle(ofPoint pts, float angle, int dim, float speedX, float speedY
 Particle::Particle(ofPoint pts, int dim, float speedX, float speedY, float speedZ, ofColor color) {
 
     this->pts = pts;
-    this->dim = dim;
+    sphere.setRadius(dim);
     this->speedY = speedY;
     this->speedX = speedX;
     this->speedZ = speedZ;
@@ -34,17 +35,21 @@ void Particle::update(){
             pts.z = 0;
             pts.y = -10;
         }
-        pts.z+=speedZ;
+
     }
 
     pts.x+=speedX;
     pts.y+=speedY;
+    pts.z+=speedZ;
+    sphere.setPosition(pts.x, pts.y, pts.z);
 
 }
 
 void Particle::draw(){
     ofSetColor(color);
-    ofDrawCircle(pts.x,pts.y,dim);
+    //ofDrawCircle(pts.x,pts.y,dim);
+
+    sphere.drawWireframe();
 }
 void Particle::setD(int dim){
     this->dim = dim;

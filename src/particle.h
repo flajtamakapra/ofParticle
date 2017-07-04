@@ -24,6 +24,8 @@ class Particle {
     int dim;        // size
     ofColor color;  // color using ofColor type
 
+    ofSpherePrimitive sphere;
+
 
 
     Particle(ofPoint pts, float angle, int dim, float speedX, float speedY, ofColor color);
