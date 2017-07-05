@@ -1,7 +1,7 @@
 #include "particle.h"
 
 // 2 dimensions trajet lignes courbes
-Particle::Particle(ofPoint pts, float radius, int dim, float speedX, float speedY, float speedZ, float offsetX, float offsetY, float offsetZ, ofColor color) {
+Particle::Particle(ofPoint pts, float radius, float dim, float speedX, float speedY, float speedZ, float offsetX, float offsetY, float offsetZ, ofColor color) {
 
     this->pts = pts;
     sphere.setRadius(dim);
@@ -45,17 +45,32 @@ void Particle::update(){
 
     }
 
-
+// Lineaires
 //    pts.x+=speedX;
 //    pts.y+=speedY;
 //    pts.z+=speedZ;
-
+// Cilindriques
     float angleX = startPt+ofGetElapsedTimef()*speedX;
     float angleY = startPt+ofGetElapsedTimef()*speedY;
     float angleZ = startPt+ofGetElapsedTimef()*speedZ;
-    pts.x = ptsOrig.x + (radius + offsetX) * cos(angleX);
-    pts.y = ptsOrig.y + (radius + offsetY) * sin(angleY);
-    pts.z = ptsOrig.z + (radius + offsetZ) * cos(angleZ) * sin(angleZ);
+//    pts.x = ptsOrig.x + (radius + offsetX) * cos(angleX);
+//    pts.y = ptsOrig.y + (radius + offsetY) * sin(angleY);
+//    pts.z = ptsOrig.z + (radius + offsetZ) * cos(angleZ);
+
+
+// Autre formule pour trouver une sphere?
+// x = r cos(lat)cos(lon)
+// y = r cos(lat)sin(lon)
+// z = r sin(lat)
+// --------------------------------------
+
+    float lon = ofMap(ofRandom(500), 0, 300, -PI, PI);
+    float lat = ofMap(ofRandom(500), 0, 300, -PI/2, PI/2);
+
+    pts.x = radius * cos(lat) * cos(lon);
+    pts.y = radius * cos(lat) * sin(lon);
+    pts.z = radius * sin(lat);
+
     sphere.setPosition(pts.x, pts.y, pts.z);
 
 }
